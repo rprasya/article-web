@@ -1,19 +1,19 @@
 @php
     $menus = [
         (object) [
-            'title' => 'Dashboard',
-            'path' => '/',
-            'icon' => '',
-        ],
-        (object) [
             'title' => 'category',
             'path' => '/category',
-            'icon' => '',
+            'icon' => 'fa-solid fa-list',
         ],
         (object) [
             'title' => 'Article',
             'path' => '/article',
-            'icon' => '',
+            'icon' => 'fa-solid fa-newspaper',
+        ],
+        (object) [
+            'title' => 'User',
+            'path' => '/user',
+            'icon' => 'fa fa-users',
         ],
     ];
 @endphp
@@ -60,27 +60,14 @@
             </div>
         </div>
     </li> --}}
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fa-solid fa-list"></i>
-            <span>Category</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fa-solid fa-newspaper"></i>
-            <span>Article</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fa fa-users"></i>
-            <span>User</span></a>
-    </li>
+    @foreach ($menus as $menu)
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ $menu->path }}">
+                <i class="{{ $menu->icon }}"></i>
+                <span>{{ $menu->title }}</span></a>
+        </li>
+    @endforeach
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
