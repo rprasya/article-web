@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="d-flex align-items-center justify-content-between mb-3">
-        <h3>List Article</h3>
+        <h4>List Article</h4>
         <a href="{{ route('article.create') }}" class="btn btn-success">Add Article</a>
     </div>
     <table class="table table-hover">
@@ -26,8 +26,8 @@
         </thead>
         @foreach ($articles as $article)
             <tbody>
-                <tr>
-                    <td class="align-middle">{{ ($articles->currentPage() - 1) * $articles->perPage() + $loop->index + 1 }}</td>
+                <tr class="">
+                    <td class="align-middle text-center">{{ ($articles->currentPage() - 1) * $articles->perPage() + $loop->index + 1 }}</td>
                     <td class="align-middle">{{ $article->title }}</td>
                     <td class="align-middle">{{ $article->content }}</td>
                     <td class="align-middle">{{ $article->author }}</td>
