@@ -37,41 +37,61 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleFirstName" placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="exampleLastName" placeholder="Last Name">
-                                    </div>
+                            <form action="{{ route('register.admin') }}" class="user" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text"
+                                        class="form-control form-control-user @error('name')
+                                        is-invalid
+                                    @enderror"
+                                        name="name" placeholder="Full Name">
+                                    @error('name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="email"
+                                        class="form-control form-control-user @error('email')
+                                        is-invalid
+                                    @enderror"
+                                        name="email" placeholder="Email Address">
+                                    @error('email')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input type="password"
+                                            class="form-control form-control-user @error('password')
+                                            is-invalid
+                                        @enderror"
+                                            name="password" placeholder="Password">
+                                        @error('password')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <input type="password" name="password_confirmation"
+                                            class="form-control form-control-user @error('password_confirmation')
+                                            is-invalid
+                                        @enderror"
+                                            name="password_confirmation" placeholder="Repeat Password">
+                                        @error('password_confirmation')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
-                                </a>
+                                </button>
                             </form>
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="{{ route('login.page') }}">Already have an account? Login!</a>
+                                <a class="small" href="{{ route('login.page.admin') }}">Already have an account?
+                                    Login!</a>
                             </div>
                         </div>
                     </div>
