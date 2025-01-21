@@ -16,6 +16,7 @@ Route::get('/main', function () {
 // login
 Route::get('/login', [AuthController::class, 'login'])->name('login.page.admin');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.admin');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // register
 Route::get('/register', [AuthController::class, 'register'])->name('register.page.admin');
 Route::post('/register', [AuthController::class, 'createAdmin'])->name('register.admin');

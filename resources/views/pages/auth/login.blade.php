@@ -12,7 +12,8 @@
     <title>SB Admin 2 - Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('admin_templates/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin_templates/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+        type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -44,9 +45,15 @@
                                     <form action="{{ route('login.admin') }}" class="user" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email"
+                                                class="form-control form-control-user @error('email')
+                                                is-invalid
+                                            @enderror"
                                                 name="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                placeholder="Enter Email Address">
+                                            @error('email')
+                                                <span class="invalid-feedback">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group mb-4">
                                             <input type="password" class="form-control form-control-user"
@@ -56,9 +63,10 @@
                                             Login
                                         </button>
                                     </form>
-                                    
+
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register.page.admin') }}">Create an Account!</a>
+                                        <a class="small" href="{{ route('register.page.admin') }}">Create an
+                                            Account!</a>
                                     </div>
                                 </div>
                             </div>
