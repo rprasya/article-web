@@ -21,10 +21,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->name('register.page.admin');
 Route::post('/register', [AuthController::class, 'createAdmin'])->name('register.admin');
 
+// Dashboard
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
 // Middleware Auth
 Route::middleware(IsLogin::class)->group(function(){
-    // Dashboard
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
     // article
     Route::get('/article', [ArticleController::class, 'index'])->name('article');
