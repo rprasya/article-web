@@ -2,12 +2,12 @@
     $menus = [
         (object) [
             'title' => 'category',
-            'path' => '/category',
+            'path' => 'category',
             'icon' => 'fa-solid fa-list',
         ],
         (object) [
             'title' => 'Article',
-            'path' => '/article',
+            'path' => 'article',
             'icon' => 'fa-solid fa-newspaper',
         ],
         (object) [
@@ -31,7 +31,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fa-solid fa-gauge"></i>
             <span>Dashboard</span></a>
@@ -62,8 +62,9 @@
     </li> --}}
     @foreach ($menus as $menu)
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ $menu->path }}">
+        <li class="nav-item {{ request()->path() === $menu->path ? 'active' : '' }}">
+            <a href="{{ $menu->path[0] !== '/' ? '/' . $menu->path : $menu->path  }}"
+                class="nav-link">
                 <i class="{{ $menu->icon }}"></i>
                 <span>{{ $menu->title }}</span></a>
         </li>
