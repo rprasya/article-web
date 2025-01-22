@@ -20,7 +20,6 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
         <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
@@ -186,16 +185,15 @@
                     Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                {{-- <form action="{{ route('logout') }}" method="POST">
+                    @csrf --}}
+                    <button type="submit" class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-logout">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
                     </button>
-                </form>
+                {{-- </form> --}}
             </div>
         </li>
-
     </ul>
-
+    @include('pages.auth.logout-confirmation')
 </nav>
