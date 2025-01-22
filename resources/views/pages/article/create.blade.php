@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: '@foreach ($errors->all() as $error) {{ $error }} @endforeach',
+                icon: 'error',
+                // confirmButtonText: 'Login'
+            })
+        </script>
+    @endif
     <div class="card"></div>
     <form action="{{ route('article.post') }}" method="POST">
         <div class="card">

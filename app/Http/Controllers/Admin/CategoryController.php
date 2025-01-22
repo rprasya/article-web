@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         Category::create($category);
         
-        return redirect()->route('category')->with('success', 'Berhasil membuat category');
+        return redirect()->route('category')->with('success', 'Berhasil menambahkan category');
     }
 
     /**
@@ -78,7 +78,7 @@ class CategoryController extends Controller
 
         Category::where('id', $id)->update($category);
         
-        return redirect()->route('category')->with('success', 'Berhasil mengubah category');
+        return redirect()->route('category')->with('success', 'Berhasil update category');
     }
 
     /**

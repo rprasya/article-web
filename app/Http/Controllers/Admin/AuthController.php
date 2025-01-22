@@ -24,7 +24,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
-            return redirect()->intended('/')->with('success', 'Berhasil Login');
+            return redirect()->intended('/');
         }
  
         return back()->withErrors([
@@ -52,7 +52,7 @@ class AuthController extends Controller
 
         User::create($adminUser);
 
-        return redirect()->route('login.page.admin')->with('success', 'Berhasil Registrasi');
+        return redirect()->route('login.page.admin')->with('success-register', 'Success Register');
     }
 
     public function logout(Request $request)

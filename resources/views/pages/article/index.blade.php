@@ -9,6 +9,16 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            // confirmButtonText: 'Login'
+        })
+    </script>
+    @endif
     <div class="d-flex align-items-center justify-content-between mb-3">
         <h4>List Article</h4>
         <a href="{{ route('article.create') }}" class="btn btn-success">Add Article</a>
@@ -27,7 +37,8 @@
         @foreach ($articles as $article)
             <tbody>
                 <tr class="">
-                    <td class="align-middle text-center">{{ ($articles->currentPage() - 1) * $articles->perPage() + $loop->index + 1 }}</td>
+                    <td class="align-middle text-center">
+                        {{ ($articles->currentPage() - 1) * $articles->perPage() + $loop->index + 1 }}</td>
                     <td class="align-middle">{{ $article->title }}</td>
                     <td class="align-middle">{{ $article->content }}</td>
                     <td class="align-middle">{{ $article->author }}</td>
@@ -36,15 +47,17 @@
                         <div class="d-flex">
                             <a href="{{ route('article.edit', ['id' => $article->id]) }}"
                                 class="btn btn-sm btn-warning mr-2">Update</a>
-                            <form action="{{ route('article.delete', ['id' => $article->id]) }}" method="POST"
+                            {{-- <form action="{{ route('article.delete', ['id' => $article->id]) }}" method="POST"
                                 onsubmit="return confirm('Apakah anda yakin untuk menghapus article ini?')">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                            </form> --}}
+                            <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $article->id }}">Delete</button>
                         </div>
                     </td>
                 </tr>
+                @include('pages.article.delete-confirmation')
             </tbody>
         @endforeach
     </table>

@@ -44,7 +44,7 @@
                                         class="form-control form-control-user @error('name')
                                         is-invalid
                                     @enderror"
-                                        name="name" placeholder="Full Name">
+                                        name="name" placeholder="Full Name" value="{{ old('name') }}">
                                     @error('name')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
@@ -54,7 +54,7 @@
                                         class="form-control form-control-user @error('email')
                                         is-invalid
                                     @enderror"
-                                        name="email" placeholder="Email Address">
+                                        name="email" placeholder="Email Address" value="{{ old('email') }}">
                                     @error('email')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror

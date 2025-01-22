@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: '@foreach ($errors->all() as $error) {{ $error }} @endforeach',
+                icon: 'error',
+                // confirmButtonText: 'Login'
+            })
+        </script>
+    @endif
     <div class="card"></div>
     <form action="{{ route('article.update', ['id' => $article->id]) }}" method="POST">
         <div class="card">
@@ -47,7 +57,8 @@
                     <label for="category_id" class="form-label">Category</label>
                     <select name="category_id" id="category_id" class="form-control">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" {{ $article->id === $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" {{ $article->id === $category->id ? 'selected' : '' }}>
+                                {{ $category->name }}</option>
                         @endforeach
                     </select>
                 </div>

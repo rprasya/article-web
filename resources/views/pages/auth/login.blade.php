@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_templates/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <!-- sweet alert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -26,6 +29,26 @@
     <div class="container">
 
         <!-- Outer Row -->
+        @if (session('error-unauthorized'))
+            <script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: '{{ session('error-unauthorized') }}',
+                    icon: 'error',
+                    confirmButtonText: 'Login'
+                })
+            </script>
+        @endif
+        @if (session('success-register'))
+            <script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: '{{ session('success-register') }}',
+                    icon: 'success',
+                    // confirmButtonText: 'Login'
+                })
+            </script>
+        @endif
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">

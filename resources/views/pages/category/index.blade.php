@@ -9,6 +9,16 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                // confirmButtonText: 'Login'
+            })
+        </script>
+    @endif
     <div class="d-flex align-items-center justify-content-between mb-3">
         <h4>List Category</h4>
         <a href="{{ route('category.create') }}" class="btn btn-success">Add Category</a>
@@ -33,15 +43,17 @@
                         <div class="d-flex justify-content-center">
                             <a href="{{ route('category.edit', ['id' => $category->id]) }}"
                                 class="btn btn-sm btn-warning mr-2">Update</a>
-                            <form action="{{ route('category.delete', ['id' => $category->id]) }}" method="POST"
+                            {{-- <form action="{{ route('category.delete', ['id' => $category->id]) }}" method="POST"
                                 onsubmit="return confirm('Apakah anda yakin untuk menghapus category ini?')">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                            </form> --}}
+                            <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $category->id }}">Delete</button>
                         </div>
                     </td>
                 </tr>
+                @include('pages.category.delete-confirmation')
             </tbody>
         @endforeach
     </table>

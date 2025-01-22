@@ -49,7 +49,7 @@ class ArticleController extends Controller
 
         Article::create($article);
 
-        return redirect()->route('article')->with('succes-post', "Berhasil menambahkan article");
+        return redirect()->route('article')->with('success', "Berhasil menambahkan article");
     }
 
     /**
@@ -95,7 +95,7 @@ class ArticleController extends Controller
 
         Article::where('id', $id)->update($article);
 
-        return redirect()->route('article')->with('success', 'Berhasil mengubah article');
+        return redirect()->route('article')->with('success', "Berhasil update article");
     }
 
     /**
